@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from "uuid";
  */
 export class Match {
   private id: string;
-  public date: Date;
+  public date: number;
   public location: string;
   public homeTeam: Team;
   public awayTeam: Team;
@@ -21,7 +21,7 @@ export class Match {
    * @param {Team} homeTeam - Home team.
    * @param {Team} awayTeam - Away team.
    */
-  constructor(date: Date, location: string, homeTeam: Team, awayTeam: Team) {
+  constructor(date: number, location: string, homeTeam: Team, awayTeam: Team) {
     this.id = uuidv4();
     this.date = date;
     this.location = location;

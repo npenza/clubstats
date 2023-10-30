@@ -29,7 +29,6 @@ function App() {
   round1.addMatch(match1);
   round1.addMatch(match2);
 
-
   // League
   const sampleLeague = new League("Noah League", [
     barcelona,
