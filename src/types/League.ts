@@ -75,7 +75,7 @@ export class League {
       // TODO: Update below to factory creation
       return await Round.create(
         roundData.id,
-        roundData.name,
+        roundData.roundNumber,
         roundData.matchIDs,
       );
     });

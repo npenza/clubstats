@@ -10,16 +10,16 @@ export class Round {
   public roundNumber: number;
   public matches: Match[] = [];
 
-  private async initialize(id: string, name: string, matchIDs: string[]) {
+  private async initialize(id: string, roundNumber: number , matchIDs: string[]) {
     this.id = id;
-    this.name = name;
+    this.roundNumber = roundNumber;
     this.matches = await this.fetchRoundMatches(matchIDs);
   }
 
   // Create a static factory method to create League instances
-  static async create(id: string, name: string, matchIDs: string[]) {
+  static async create(id: string, roundNumber: number , matchIDs: string[]) {
     const round = new Round();
-    await round.initialize(id, name, matchIDs);
+    await round.initialize(id, roundNumber, matchIDs);
     return round;
   }
 
