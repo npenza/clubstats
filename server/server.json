@@ -1,14 +1,14 @@
 {
     "teams": [
-      { "id": 324234, "name": "team json", "gamesPlayed": 2, "totalPoints" : 3 },
-      { "id": 324233342, "name": "sydney fc", "gamesPlayed": 2, "totalPoints" : 5 },
-      { "id": 25235532, "name": "penza fc!!!","gamesPlayed": 2, "totalPoints" : 3 }
+      { "id": 324234, "name": "Brisbane", "gamesPlayed": 2, "totalPoints" : 3  , "teamImg" : "https://1000logos.net/wp-content/uploads/2019/08/Brisbane-Broncos-logo.jpg"},
+      { "id": 324233342, "name": "Sydney", "gamesPlayed": 2, "totalPoints" : 5 },
+      { "id": 25235532, "name": "Penrith","gamesPlayed": 2, "totalPoints" : 3 , "teamImg" : "https://1000logos.net/wp-content/uploads/2019/07/Penrith-Panthers-emblem.jpg"}
     ],
     "matches": [
       { "id": "mtch01", "date": 34223423423, "location": "Moore Park", "homeTeamID" : 324234 , "awayTeamID": 25235532 , "homeScore" : 0 , "awayScore" : 0 }
     ],
     "leagues" : [
-        { "id": "243234" , "name" : "Noah League v4" , "teamIDs" : ["324234" , "324233342"] , "roundIDs" : ["rd01" , "rd02"]}
+        { "id": "243234" , "name" : "Noah League v4" , "teamIDs" : ["324234" , "324233342" , "25235532"] , "roundIDs" : ["rd01" , "rd02"]}
     ],
     "rounds" : [
       {"id" : "rd01" , "roundNumber" : 1 , "matchIDs" : ["mtch01"] },

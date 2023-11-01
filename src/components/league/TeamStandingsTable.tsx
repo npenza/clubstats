@@ -1,30 +1,11 @@
 import { Card, Typography } from "@material-tailwind/react";
 import { Team } from "../../types/Team";
-import { useEffect, useState } from "react";
-import config from "../../../config";
 
 const TABLE_HEAD = ["Team", "Games Played", "Total Points"];
 
-export function TeamStandingsTable({ teams: initialTeams }: { teams: Team[] }) {
-  const [teams, setTeams] = useState(initialTeams);
+export function TeamStandingsTable({ teams }: { teams: Team[] }) {
 
-  useEffect(() => {
-    // Fetch the data and update the state
-    async function fetchData() {
-      try {
-        const response = await fetch(config.API_URL + "/teams");
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        const data = await response.json();
-        setTeams(data);
-      } catch (error) {
-        console.error("Fetch error:", error);
-      }
-    }
-
-    fetchData();
-  }, []); // Empty dependency array to ensure it only runs once
+  const sortedTeams = teams.sort((t1 , t2) => t2.totalPoints - t1.totalPoints)
 
   return (
     <Card className="h-full w-full overflow-scroll">
@@ -48,8 +29,8 @@ export function TeamStandingsTable({ teams: initialTeams }: { teams: Team[] }) {
           </tr>
         </thead>
         <tbody>
-          {teams.map(({ name, gamesPlayed, totalPoints }, index) => {
-            const isLast = index === teams.length - 1;
+          {sortedTeams.map(({ name, gamesPlayed, totalPoints }, index) => {
+            const isLast = index === sortedTeams.length - 1;
             const classes = isLast ? "p-4" : "p-4 border-b border-blue-gray-50";
 
             return (

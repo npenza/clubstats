@@ -40,7 +40,7 @@ export class League {
    */
   private async fetchLeagueTeams(teamIDs: string[]): Promise<Team[]> {
     const teamPromises: Promise<Team>[] = teamIDs.map(async (id) => {
-      return await Team.create(id)
+      return await Team.create(id);
     });
 
     try {

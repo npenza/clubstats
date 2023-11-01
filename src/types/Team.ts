@@ -1,4 +1,4 @@
-import config from '../../config';
+import config from "../../config";
 
 /**
  * Represents a team.
@@ -7,6 +7,7 @@ import config from '../../config';
 interface TeamPromiseObject {
   id: string;
   name: string;
+  teamImg: string;
   gamesPlayed: number;
   totalPoints: number;
 }
@@ -14,6 +15,7 @@ interface TeamPromiseObject {
 export class Team {
   public id: string;
   public name: string;
+  public teamImg: string;
   public gamesPlayed: number;
   public totalPoints: number;
 
@@ -21,6 +23,7 @@ export class Team {
     const teamData: TeamPromiseObject = await this.fetchTeamData(id);
     this.id = id;
     this.name = teamData.name;
+    this.teamImg = teamData.teamImg;
     this.gamesPlayed = teamData.gamesPlayed || 0;
     this.totalPoints = teamData.totalPoints || 0;
   }
@@ -49,10 +52,10 @@ export class Team {
   }
 
   private async fetchTeamData(id: string): Promise<TeamPromiseObject> {
-    const response = await fetch(config.API_URL + '/teams?id=' + id);
+    const response = await fetch(config.API_URL + "/teams?id=" + id);
 
     if (!response.ok) {
-      throw new Error('Network response was not ok');
+      throw new Error("Network response was not ok");
     }
 
     const data = await response.json();
