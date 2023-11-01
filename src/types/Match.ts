@@ -1,11 +1,10 @@
 import { Team } from "./Team";
-import { v4 as uuidv4 } from "uuid";
 
 /**
  * Represents a match.
  */
 export class Match {
-  private id: string;
+  public id: string;
   public date: number;
   public location: string;
   public homeTeam: Team;
@@ -16,13 +15,20 @@ export class Match {
 
   /**
    * Creates a new match instance.
+   * @param {string} id - The id of the match
    * @param {Date} date - The date of the match
    * @param {string} location - The location of the match.
    * @param {Team} homeTeam - Home team.
    * @param {Team} awayTeam - Away team.
    */
-  constructor(date: number, location: string, homeTeam: Team, awayTeam: Team) {
-    this.id = uuidv4();
+  constructor(
+    id: string,
+    date: number,
+    location: string,
+    homeTeam: Team,
+    awayTeam: Team,
+  ) {
+    this.id = id;
     this.date = date;
     this.location = location;
     this.homeTeam = homeTeam;

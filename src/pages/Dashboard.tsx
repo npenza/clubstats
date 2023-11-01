@@ -7,38 +7,38 @@ import useFetchLeague from "../hooks/useFetchLeague";
 
 const Dashboard: React.FC = () => {
   // Set league
-  const league = useFetchLeague("243234");
+  const { league, loadingLeague } = useFetchLeague("243234");
 
-  if (!league) {
-    return null; // TODO: Return loading state
-  }
-
-  return (
-    <div className="p-4">
-      {/* Header */}
-      <header className="py-4">
-        <span className="text-gray-700">#{league.getID()}</span>
-        <h1 className="text-5xl font-semibold">
-          {league.name} ({league.rounds.length} rounds)
-        </h1>
-      </header>
-      {/* Aside User Controls */}
-      <div className="flex flex-row gap-8">
-        <aside>
-          <h3>Standings</h3>
-          <div className="max-w-[500px] my-2">
-            {/* Standings */}
-            <TeamStandingsTable teams={league.teams} />
-          </div>
-        </aside>
-        {/* Main User Controls / Content */}
-        <main>
-          {/* Rounds Navigation / Controls */}
-          <RoundsNavigation rounds={league.rounds} />
-        </main>
+  if (loadingLeague) {
+    return <p>Loading...</p>;
+  } else if (!loadingLeague && league) {
+    return (
+      <div className="p-4">
+        {/* Header */}
+        <header className="py-4">
+          <span className="text-gray-700">#{league.getID()}</span>
+          <h1 className="text-5xl font-semibold">
+            {league.name} ({league.rounds.length} rounds)
+          </h1>
+        </header>
+        {/* Aside User Controls */}
+        <div className="flex flex-row gap-8">
+          <aside>
+            <h3>Standings</h3>
+            <div className="max-w-[500px] my-2">
+              {/* Standings */}
+              <TeamStandingsTable teams={league.teams} />
+            </div>
+          </aside>
+          {/* Main User Controls / Content */}
+          <main>
+            {/* Rounds Navigation / Controls */}
+            <RoundsNavigation rounds={league.rounds} />
+          </main>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 function LogInDashboard(): React.ReactElement {

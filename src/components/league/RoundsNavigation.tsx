@@ -6,7 +6,7 @@ export default function RoundsNavigation({ rounds }: { rounds: Round[] }) {
     <ul>
       {rounds.map((round) => (
         <>
-          <li>{round.roundNumber}</li>
+          <li key={round.id}>{round.roundNumber}</li>
           <MatchNavigation matches={round.matches} />
         </>
       ))}

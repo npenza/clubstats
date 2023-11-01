@@ -1,6 +1,7 @@
 import { Card, Typography } from "@material-tailwind/react";
 import { Team } from "../../types/Team";
 import { useEffect, useState } from "react";
+import config from "../../../config";
 
 const TABLE_HEAD = ["Team", "Games Played", "Total Points"];
 
@@ -11,7 +12,7 @@ export function TeamStandingsTable({ teams: initialTeams }: { teams: Team[] }) {
     // Fetch the data and update the state
     async function fetchData() {
       try {
-        const response = await fetch("http://localhost:3000/teams");
+        const response = await fetch(config.API_URL + "/teams");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }

@@ -5,7 +5,6 @@ import DashboardPage from "./pages/Dashboard";
 import AccountPage from "./pages/Account";
 
 function App() {
-
   return (
     <Router>
       <div className="flex flex-row">

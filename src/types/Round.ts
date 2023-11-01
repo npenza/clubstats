@@ -1,29 +1,55 @@
+import config from "../../config";
 import { Match } from "./Match";
-import { v4 as uuidv4 } from "uuid";
+import { Team } from "./Team";
 
 /**
  * Represents a Round.
  */
 export class Round {
-  private id: string;
+  public id: string;
   public roundNumber: number;
   public matches: Match[] = [];
 
-  /**
-   * Creates a new Round instance.
-   * @param {number} roundNumber - Round number.
-   */
-  constructor(roundNumber: number) {
-    this.id = uuidv4();
-    this.roundNumber = roundNumber;
+  private async initialize(id: string, name: string, matchIDs: string[]) {
+    this.id = id;
+    this.name = name;
+    this.matches = await this.fetchRoundMatches(matchIDs);
   }
 
-  /**
-   * gets Round ID
-   * @returns {string} Round ID
-   */
-  getID(): string {
-    return this.id;
+  // Create a static factory method to create League instances
+  static async create(id: string, name: string, matchIDs: string[]) {
+    const round = new Round();
+    await round.initialize(id, name, matchIDs);
+    return round;
+  }
+
+  private async fetchRoundMatches(matchIDs: string[]): Promise<Match[]> {
+    console.log(matchIDs);
+    const matchPromises: Promise<Match>[] = matchIDs.map(async (id) => {
+      const response = await fetch(config.API_URL + "/matches?id=" + id);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      const matchData: Match = data[0];
+
+      return new Match(
+        matchData.id,
+        matchData.date,
+        matchData.location,
+        // TODO: Change team to factory pattern and fetch team from IDs provided in the API
+        new Team("test1", "test1", 0, 2),
+        new Team("test2", "test2", 3, 2),
+      );
+    });
+
+    try {
+      const matches = await Promise.all(matchPromises);
+      return matches;
+    } catch (error) {
+      console.error("Fetch error:", error);
+      return [];
+    }
   }
 
   /**

@@ -1,28 +1,42 @@
 import { useState, useEffect } from "react";
 import { League } from "../types/League";
+import config from "../../config";
 
-function useFetchLeague(id: string) {
-  const [league, setLeague] = useState<League | undefined>(); // Specify the return type
+interface UseFetchLeagueResult {
+  league: League | undefined;
+  loadingLeague: boolean;
+}
+
+function useFetchLeague(id: string): UseFetchLeagueResult {
+  const [league, setLeague] = useState<League | undefined>();
+  const [loadingLeague, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:3000/leagues?id=${id}`) // Fix URL interpolation
+    setLoading(true);
+    fetch(config.API_URL + `/leagues?id=${id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
         return response.json();
       })
-      .then((data: League) => {
-        // Create a new League object with the fetched data and leagueTeams
-        const newLeague = new League(data[0].id, data[0].name, data[0].teamIDs);
+      .then(async (data: League[]) => {
+        const newLeague = await League.create(
+          data[0].id,
+          data[0].name,
+          data[0].teamIDs,
+          data[0].roundIDs,
+        );
         setLeague(newLeague);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Fetch error:", error);
+        setLoading(false);
       });
-  }, [id]); // Include id and leagueTeams in the dependency array
+  }, [id]);
 
-  return league;
+  return { league, loadingLeague };
 }
 
 export default useFetchLeague;

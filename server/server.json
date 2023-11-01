@@ -5,9 +5,13 @@
       { "id": 25235532, "name": "penza fc","gamesPlayed": 2, "totalPoints" : 3 }
     ],
     "matches": [
-      { "id": 1, "date": "43242342342", "location": "Moore Park", "homeTeamID" : 324234 , "awayTeamID": 25235532 , "homeScore" : 0 , "awayScore" : 0 }
+      { "id": "mtch01", "date": 34223423423, "location": "Moore Park", "homeTeamID" : 324234 , "awayTeamID": 25235532 , "homeScore" : 0 , "awayScore" : 0 }
     ],
     "leagues" : [
-        { "id": "243234" , "name" : "Noah League v4" , "teamIDs" : ["324234" , "324233342"] , "rounds" : []}
+        { "id": "243234" , "name" : "Noah League v4" , "teamIDs" : ["324234" , "324233342"] , "roundIDs" : ["rd01" , "rd02"]}
+    ],
+    "rounds" : [
+      {"id" : "rd01" , "roundNumber" : 1 , "matchIDs" : ["mtch01"] },
+      {"id" : "rd02" , "roundNumber" : 2 , "matchIDs" : [] }
     ]
 }
