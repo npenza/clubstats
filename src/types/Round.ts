@@ -36,9 +36,8 @@ export class Round {
         matchData.id,
         matchData.date,
         matchData.location,
-        // TODO: Change team to factory pattern and fetch team from IDs provided in the API
-        new Team("test1", "test1", 0, 2),
-        new Team("test2", "test2", 3, 2),
+        await Team.create(matchData.homeTeamID),
+        await Team.create(matchData.awayTeamID),
       );
     });
 

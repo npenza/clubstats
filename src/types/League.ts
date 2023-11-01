@@ -40,18 +40,7 @@ export class League {
    */
   private async fetchLeagueTeams(teamIDs: string[]): Promise<Team[]> {
     const teamPromises: Promise<Team>[] = teamIDs.map(async (id) => {
-      const response = await fetch(config.API_URL + "/teams?id=" + id);
-      if (!response.ok) {
-        throw new Error("Network response was not ok");
-      }
-      const data = await response.json();
-      const teamData: Team = data[0];
-      return new Team(
-        teamData.id,
-        teamData.name,
-        teamData.gamesPlayed,
-        teamData.totalPoints,
-      );
+      return await Team.create(id)
     });
 
     try {
