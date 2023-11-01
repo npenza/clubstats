@@ -27,14 +27,6 @@ export class Team {
   }
 
   /**
-   * gets Team ID
-   * @returns {string} Team ID
-   */
-  getID(): string {
-    return this.id;
-  }
-
-  /**
    * Update the number of games played.
    * @param {number} increment - number of games you wish to add/subtract.
    */

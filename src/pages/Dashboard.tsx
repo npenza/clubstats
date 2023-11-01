@@ -16,7 +16,7 @@ const Dashboard: React.FC = () => {
       <div className="p-4">
         {/* Header */}
         <header className="py-4">
-          <span className="text-gray-700">#{league.getID()}</span>
+          <span className="text-gray-700">#{league.id}</span>
           <h1 className="text-5xl font-semibold">
             {league.name} ({league.rounds.length} rounds)
           </h1>

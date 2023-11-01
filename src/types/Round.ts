@@ -24,7 +24,6 @@ export class Round {
   }
 
   private async fetchRoundMatches(matchIDs: string[]): Promise<Match[]> {
-    console.log(matchIDs);
     const matchPromises: Promise<Match>[] = matchIDs.map(async (id) => {
       const response = await fetch(config.API_URL + "/matches?id=" + id);
       if (!response.ok) {

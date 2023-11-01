@@ -39,14 +39,6 @@ export class Match {
   }
 
   /**
-   * gets Match ID
-   * @returns {string} match ID
-   */
-  getID(): string {
-    return this.id;
-  }
-
-  /**
    * Update the score for the home team.
    * @param {number} increment - number of total points you wish to add/subtract.
    */
