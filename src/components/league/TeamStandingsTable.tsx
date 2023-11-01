@@ -4,8 +4,7 @@ import { Team } from "../../types/Team";
 const TABLE_HEAD = ["Team", "Games Played", "Total Points"];
 
 export function TeamStandingsTable({ teams }: { teams: Team[] }) {
-
-  const sortedTeams = teams.sort((t1 , t2) => t2.totalPoints - t1.totalPoints)
+  const sortedTeams = teams.sort((t1, t2) => t2.totalPoints - t1.totalPoints);
 
   return (
     <Card className="h-full w-full overflow-scroll">
