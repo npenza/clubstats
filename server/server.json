@@ -1,0 +1,13 @@
+{
+    "teams": [
+      { "id": 324234, "name": "team json", "gamesPlayed": 2, "totalPoints" : 3 },
+      { "id": 324233342, "name": "sydney fc", "gamesPlayed": 2, "totalPoints" : 5 },
+      { "id": 25235532, "name": "penza fc","gamesPlayed": 2, "totalPoints" : 3 }
+    ],
+    "matches": [
+      { "id": 1, "date": "43242342342", "location": "Moore Park", "homeTeamID" : 324234 , "awayTeamID": 25235532 , "homeScore" : 0 , "awayScore" : 0 }
+    ],
+    "leagues" : [
+        { "id": "243234" , "name" : "Noah League v4" , "teamIDs" : ["324234" , "324233342"] , "rounds" : []}
+    ]
+}

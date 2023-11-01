@@ -1,10 +1,29 @@
 import { Card, Typography } from "@material-tailwind/react";
 import { Team } from "../../types/Team";
+import { useEffect, useState } from "react";
 
 const TABLE_HEAD = ["Team", "Games Played", "Total Points"];
 
-export function TeamStandingsTable({ teams }: { teams: Team[] }) {
-  teams = teams.sort((t1, t2) => t2.totalPoints - t1.totalPoints);
+export function TeamStandingsTable({ teams: initialTeams }: { teams: Team[] }) {
+  const [teams, setTeams] = useState(initialTeams);
+
+  useEffect(() => {
+    // Fetch the data and update the state
+    async function fetchData() {
+      try {
+        const response = await fetch("http://localhost:3000/teams");
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setTeams(data);
+      } catch (error) {
+        console.error("Fetch error:", error);
+      }
+    }
+
+    fetchData();
+  }, []); // Empty dependency array to ensure it only runs once
 
   return (
     <Card className="h-full w-full overflow-scroll">

@@ -48,11 +48,11 @@ export class Match {
     this.homeScore += increment;
   }
 
-   /**
+  /**
    * Update the score for the away team.
    * @param {number} increment - number of total points you wish to add/subtract.
    */
-   updateAwayScore(increment: number) {
+  updateAwayScore(increment: number) {
     this.awayScore += increment;
   }
 }

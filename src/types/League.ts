@@ -1,25 +1,25 @@
 import { Team } from "./Team";
 import { Round } from "./Round";
-import { v4 as uuidv4 } from "uuid";
 
 /**
  * Represents a club league.
  */
 export class League {
-  private id: string;
+  public id: string;
   public name: string;
   public teams: Team[] = [];
   public rounds: Round[] = [];
 
   /**
    * Creates a new League instance.
+   * @param {string} id - The id of the league
    * @param {string} name - The name of the league.
-   * @param {Team[]} teams - (Optional) List of teams included in the league.
+   * @param {string[]} teamIDs - an array of team IDs.
    */
-  constructor(name: string, teams?: Team[]) {
-    this.id = uuidv4();
+  constructor(id: string, name: string, teamIDs: string[]) {
+    this.id = id;
     this.name = name;
-    this.teams = teams || [];
+    this.teams = this.fetchLeagueTeams(teamIDs);
   }
 
   /**
@@ -34,8 +34,36 @@ export class League {
    * Get the list of teams in the league.
    * @returns {Team[]} an array of teams in the league.
    */
-  getLeagueTeams(): Team[] {
-    return this.teams;
+  private fetchLeagueTeams(teamIDs: string[]): Team[] {
+    // prepare array of teams
+    const leagueTeams: Team[] = [];
+
+    // for each teamID, fetch, transform to team object and save to array
+    teamIDs.forEach((id) => {
+      fetch(`http://localhost:3000/teams?id=${id}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          const teamData: Team = data[0];
+          const teamObject = new Team(
+            teamData.id,
+            teamData.name,
+            teamData.gamesPlayed,
+            teamData.totalPoints,
+          );
+          leagueTeams.push(teamObject);
+        })
+        .catch((error) => {
+          console.error("Fetch error:", error);
+        });
+    });
+
+    // return array
+    return leagueTeams;
   }
 
   /**

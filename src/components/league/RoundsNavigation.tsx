@@ -19,7 +19,8 @@ function MatchNavigation({ matches }: { matches: Match[] }) {
     <>
       {matches.map((match) => (
         <li>
-          {match.awayTeam.name} - {match.awayScore} @ {match.homeScore} {match.homeTeam.name}
+          {match.awayTeam.name} - {match.awayScore} @ {match.homeScore}{" "}
+          {match.homeTeam.name}
         </li>
       ))}
     </>
