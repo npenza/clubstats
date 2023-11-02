@@ -1,4 +1,12 @@
 {
+  "users": [
+    {
+      "id": "03232432423",
+      "leagueIDs": [
+        "noah"
+      ]
+    }
+  ],
   "teams": [
     {
       "id": 324234,
@@ -40,6 +48,13 @@
       "gamesPlayed": 0,
       "totalPoints": 0,
       "teamImg": ""
+    },
+    {
+      "id": "a13985a0-0cdd-4725-bd59-7522d8bee5ba",
+      "name": "",
+      "gamesPlayed": 0,
+      "totalPoints": 0,
+      "teamImg": ""
     }
   ],
   "matches": [
@@ -70,9 +85,7 @@
         "324233342",
         "324234",
         "25235532",
-        "6a4d9d17-1b08-415c-babb-842742e4aa6d",
-        "b397e6a6-0803-45e0-9f83-95677d6d0923",
-        "fdb88efe-d642-4775-a96c-3ae67248d409"
+        "a13985a0-0cdd-4725-bd59-7522d8bee5ba"
       ],
       "roundIDs": [
         "rd01",

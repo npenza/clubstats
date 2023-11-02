@@ -8,8 +8,10 @@ import {
 } from "@material-tailwind/react";
 import { PowerIcon, HomeIcon, Bars3Icon } from "@heroicons/react/24/solid";
 import { Link } from "react-router-dom";
+import { User } from "../../types/User";
+import { getLeagueNameByID } from "../../server/getLeagueNameByID";
 
-export function SidebarMenu() {
+export function SidebarMenu({ user }: { user: User }) {
   return (
     <Card className="h-[calc(100vh-2rem)] w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
       {/* Toggle Icon */}
@@ -23,13 +25,20 @@ export function SidebarMenu() {
       </div>
       <List>
         {/* Dashboard */}
-        <Link to={"/league/noah"}>
+        <Link to={"/"}>
           <ListItem>
             <ListItemPrefix>
               <HomeIcon className="h-5 w-5" />
             </ListItemPrefix>
             Leagues
           </ListItem>
+          {user?.leagueIDs.map((leagueID) => (
+            <Link to={"/league/" + leagueID} key={leagueID}>
+              <List>
+                <ListItem>{getLeagueNameByID(leagueID)}</ListItem>
+              </List>
+            </Link>
+          ))}
         </Link>
         {/* Log Out */}
         <Link to={"/account"}>
