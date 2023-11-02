@@ -5,10 +5,12 @@ import { TeamStandingsTable } from "../components/league/TeamStandingsTable";
 import RoundsNavigation from "../components/league/RoundsNavigation";
 import useFetchLeague from "../hooks/useFetchLeague";
 import AddTeamForm from "../components/league/AddTeamForm";
+import { useParams } from "react-router-dom";
 
 const Dashboard: React.FC = () => {
   // Set league
-  const { league, loadingLeague } = useFetchLeague("243234");
+  const { leagueID } = useParams();
+  const { league, loadingLeague } = useFetchLeague(leagueID);
 
   if (loadingLeague) {
     return <p>Loading...</p>;

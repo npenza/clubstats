@@ -10,7 +10,7 @@ function App() {
       <div className="flex flex-row">
         <SidebarMenu />
         <Routes>
-          <Route path="/" element={<DashboardPage />} />
+          <Route path="/league/:leagueID" element={<DashboardPage />} />
           <Route path="/account" element={<AccountPage />} />
           {/* Add more routes here */}
         </Routes>

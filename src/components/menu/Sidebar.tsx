@@ -23,12 +23,12 @@ export function SidebarMenu() {
       </div>
       <List>
         {/* Dashboard */}
-        <Link to={"/"}>
+        <Link to={"/league/noah"}>
           <ListItem>
             <ListItemPrefix>
               <HomeIcon className="h-5 w-5" />
             </ListItemPrefix>
-            Dashboard
+            Leagues
           </ListItem>
         </Link>
         {/* Log Out */}
