@@ -4,6 +4,7 @@ import { useUserStore } from "../store/UserStore";
 import { TeamStandingsTable } from "../components/league/TeamStandingsTable";
 import RoundsNavigation from "../components/league/RoundsNavigation";
 import useFetchLeague from "../hooks/useFetchLeague";
+import AddTeamForm from "../components/league/AddTeamForm";
 
 const Dashboard: React.FC = () => {
   // Set league
@@ -29,6 +30,10 @@ const Dashboard: React.FC = () => {
               {/* Standings */}
               <TeamStandingsTable teams={league.teams} />
             </div>
+
+            {/* Admin - add team panel */}
+            <h3>Add team to league</h3>
+            <AddTeamForm league={league} />
           </aside>
           {/* Main User Controls / Content */}
           <main>

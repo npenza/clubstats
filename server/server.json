@@ -1,18 +1,83 @@
 {
-    "teams": [
-      { "id": 324234, "name": "Brisbane", "gamesPlayed": 2, "totalPoints" : 3  , "teamImg" : "https://1000logos.net/wp-content/uploads/2019/08/Brisbane-Broncos-logo.jpg"},
-      { "id": 324233342, "name": "Sydney", "gamesPlayed": 2, "totalPoints" : 5 },
-      { "id": 25235532, "name": "Penrith","gamesPlayed": 2, "totalPoints" : 3 , "teamImg" : "https://1000logos.net/wp-content/uploads/2019/07/Penrith-Panthers-emblem.jpg"}
-    ],
-    "matches": [
-      { "id": "mtch01", "date": 2, "location": "Moore Park", "homeTeamID" : 324234 , "awayTeamID": 25235532 , "homeScore" : 0 , "awayScore" : 0 },
-      { "id": "mtch02", "date": 1, "location": "Sydney Park", "homeTeamID" : 25235532 , "awayTeamID": 324234 , "homeScore" : 0 , "awayScore" : 0 }
-    ],
-    "leagues" : [
-        { "id": "243234" , "name" : "Noah League v4" , "teamIDs" : ["324234" , "324233342" , "25235532"] , "roundIDs" : ["rd01" , "rd02"]}
-    ],
-    "rounds" : [
-      {"id" : "rd01" , "roundNumber" : 1 , "matchIDs" : ["mtch01"] },
-      {"id" : "rd02" , "roundNumber" : 2 , "matchIDs" : ["mtch02"] }
-    ]
+  "teams": [
+    {
+      "id": 324234,
+      "name": "Brisbane",
+      "gamesPlayed": 2,
+      "totalPoints": 3,
+      "teamImg": "https://1000logos.net/wp-content/uploads/2019/08/Brisbane-Broncos-logo.jpg"
+    },
+    {
+      "id": 324233342,
+      "name": "Sydney",
+      "gamesPlayed": 2,
+      "totalPoints": 5
+    },
+    {
+      "id": 25235532,
+      "name": "Penrith",
+      "gamesPlayed": 2,
+      "totalPoints": 3,
+      "teamImg": "https://1000logos.net/wp-content/uploads/2019/07/Penrith-Panthers-emblem.jpg"
+    },
+    {
+      "id": "6a4d9d17-1b08-415c-babb-842742e4aa6d",
+      "name": "Kansas",
+      "gamesPlayed": 0,
+      "totalPoints": 0,
+      "teamImg": ""
+    }
+  ],
+  "matches": [
+    {
+      "id": "mtch01",
+      "date": 2,
+      "location": "Moore Park",
+      "homeTeamID": 324234,
+      "awayTeamID": 25235532,
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "mtch02",
+      "date": 1,
+      "location": "Sydney Park",
+      "homeTeamID": 25235532,
+      "awayTeamID": 324234,
+      "homeScore": 0,
+      "awayScore": 0
+    }
+  ],
+  "leagues": [
+    {
+      "id": "243234",
+      "name": "Noah League v4",
+      "teamIDs": [
+        "324233342",
+        "324234",
+        "25235532",
+        "6a4d9d17-1b08-415c-babb-842742e4aa6d"
+      ],
+      "roundIDs": [
+        "rd01",
+        "rd02"
+      ]
+    }
+  ],
+  "rounds": [
+    {
+      "id": "rd01",
+      "roundNumber": 1,
+      "matchIDs": [
+        "mtch01"
+      ]
+    },
+    {
+      "id": "rd02",
+      "roundNumber": 2,
+      "matchIDs": [
+        "mtch02"
+      ]
+    }
+  ]
 }

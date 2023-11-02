@@ -29,7 +29,7 @@ export function MatchHub({ match, open }: { match: Match; open: boolean }) {
             <img src={match.homeTeam.teamImg} className="flex-1 object-cover" />
           </div>
           <div className="-mt-16 lg:w-[700px]">
-              <MatchScoreCard match={match} />
+            <MatchScoreCard match={match} />
           </div>
         </div>
       </Drawer>

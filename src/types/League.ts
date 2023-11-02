@@ -1,6 +1,8 @@
 import { Team } from "./Team";
 import { Round } from "./Round";
 import config from "../../config";
+import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 /**
  * Represents a club league.
  */
@@ -87,5 +89,38 @@ export class League {
       console.error("Fetch error:", error);
       return [];
     }
+  }
+
+  /**
+   * Adds a team to current league.
+   * @returns.
+   */
+  addTeamToLeague(teamName: string) {
+    const newTeamid = uuidv4();
+
+    // Crate Team in api (this can later be refactored out to the team class)
+    axios
+      .post(config.API_URL + "/teams", {
+        id: newTeamid,
+        name: teamName,
+        gamesPlayed: 0,
+        totalPoints: 0,
+        teamImg: "",
+      })
+      .then(() => {
+        // Add new team to current League in the api
+        const updatedTeamIDs = [
+          ...this.teams.map((team) => team.id),
+          newTeamid,
+        ];
+
+        axios
+          .patch(config.API_URL + "/leagues/" + this.id, {
+            teamIDs: updatedTeamIDs,
+          })
+          .catch((e) => console.log(e));
+      });
+
+    // push to current league teams array
   }
 }
